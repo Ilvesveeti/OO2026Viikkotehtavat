@@ -15,16 +15,17 @@ int main() {
     bertta.showSaldo();
     std::cout << "\n\n";
 
-    // Tulosta Aapeli ennen siirtoa (tämä puuttui sulta)
+    
     std::cout << aapeli.getNimi() << "\n";
     aapeli.showSaldo();
 
-    // Siirto
+ 
     aapeli.tiliSiirto(50, bertta);
 
-    // Tulosta Bertta siirron jälkeen
+   
     std::cout << "\n" << bertta.getNimi() << "\n";
     bertta.showSaldo();
 
     return 0;
 }
+
