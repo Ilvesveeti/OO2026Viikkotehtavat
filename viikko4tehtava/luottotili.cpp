@@ -4,20 +4,20 @@ Luottotili::Luottotili(const std::string& omistajaNimi, double raja)
     : Pankkitili(omistajaNimi), luottoRaja(raja)
 {
     if (luottoRaja < 0.0) luottoRaja = 0.0;
-    saldo = 0.0; // saldo = velka (0 ... -luottoraja), alussa ei velkaa
+    saldo = 0.0; 
 }
 
 
 double Luottotili::getBalance() const {
-    return luottoRaja + saldo; // saldo on 0..-luottoRaja
+    return luottoRaja + saldo; 
 }
 
 bool Luottotili::deposit(double summa) {
     if (summa <= 0.0) return false;
-    if (saldo >= 0.0) return false; // ei velkaa -> ei maksettavaa
+    if (saldo >= 0.0) return false; 
 
     saldo += summa;
-    if (saldo > 0.0) saldo = 0.0;   // saldo ei saa olla yli 0
+    if (saldo > 0.0) saldo = 0.0;  
     return true;
 }
 
@@ -28,3 +28,4 @@ bool Luottotili::withdraw(double summa) {
     saldo -= summa;
     return true;
 }
+
