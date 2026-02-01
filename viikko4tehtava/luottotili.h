@@ -7,12 +7,13 @@
 public:
     Luottotili(const std::string& omistajaNimi, double luottoRaja);
 
-    double getBalance() const override;   // "luottoa jaljella"
-    bool deposit(double summa) override;  // velanmaksu
-    bool withdraw(double summa) override; // luotonosto
+    double getBalance() const override;   
+    bool deposit(double summa) override;  
+    bool withdraw(double summa) override; 
 
 private:
     double luottoRaja;
 };
 
 #endif
+
