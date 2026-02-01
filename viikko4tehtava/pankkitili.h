@@ -8,9 +8,9 @@ public:
     explicit Pankkitili(const std::string& omistajaNimi);
     virtual ~Pankkitili() = default;
 
-    virtual double getBalance() const;          // Kayttotilin saldo (rahana)
-    virtual bool deposit(double summa);         // talletus
-    virtual bool withdraw(double summa);        // nosto
+    virtual double getBalance() const;          
+    virtual bool deposit(double summa);         
+    virtual bool withdraw(double summa);        
 
 protected:
     std::string omistaja;
@@ -18,3 +18,4 @@ protected:
 };
 
 #endif
+
