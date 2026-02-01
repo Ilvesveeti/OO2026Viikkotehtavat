@@ -15,7 +15,8 @@ bool Pankkitili::deposit(double summa) {
 
 bool Pankkitili::withdraw(double summa) {
     if (summa <= 0.0) return false;
-    if (summa > saldo) return false;   // ei saa mennä miinukselle
+    if (summa > saldo) return false;   
     saldo -= summa;
     return true;
 }
+
