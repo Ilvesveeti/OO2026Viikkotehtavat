@@ -35,7 +35,7 @@ void Notifikaattori::poista(Seuraaja* seuraaja)
             }
             else
             {
-                // poistetaan head
+               
                 seuraajat = nykyinen->next;
             }
 
@@ -76,3 +76,4 @@ void Notifikaattori::postita(const std::string& viesti) const
         nykyinen = nykyinen->next;
     }
 }
+
