@@ -11,7 +11,6 @@ Laskin::Laskin(QWidget *parent)
     ui->setupUi(this);
     resetAll();
 
-    // Numeronapit N0..N9 samaan handleriin
     for (int i = 0; i <= 9; ++i) {
         const QString name = "N" + QString::number(i);
         if (auto *btn = findChild<QPushButton*>(name)) {
@@ -21,13 +20,13 @@ Laskin::Laskin(QWidget *parent)
         }
     }
 
-    // Operaattorit samaan handleriin
+    
     connect(ui->add, &QPushButton::clicked, this, &Laskin::addSubMulDivClickHandler);
     connect(ui->sub, &QPushButton::clicked, this, &Laskin::addSubMulDivClickHandler);
     connect(ui->mul, &QPushButton::clicked, this, &Laskin::addSubMulDivClickHandler);
     connect(ui->div, &QPushButton::clicked, this, &Laskin::addSubMulDivClickHandler);
 
-    // clear ja enter samaan handleriin
+    
     connect(ui->clear, &QPushButton::clicked, this, &Laskin::clearAndEnterClickHandler);
     connect(ui->enter, &QPushButton::clicked, this, &Laskin::clearAndEnterClickHandler);
 }
@@ -58,12 +57,12 @@ void Laskin::numberClickedHandler()
     auto *button = qobject_cast<QPushButton*>(sender());
     if (!button) return;
 
-    const QString digit = button->text(); // "0".."9"
+    const QString digit = button->text(); 
 
     if (state == 1) {
         number1 += digit;
         ui->num1->setText(number1);
-    } else { // state == 2
+    } else { 
         number2 += digit;
         ui->num2->setText(number2);
     }
@@ -76,7 +75,7 @@ void Laskin::addSubMulDivClickHandler()
     auto *button = qobject_cast<QPushButton*>(sender());
     if (!button) return;
 
-    // Ei operaattoria ennen ekaa lukua
+    
     if (number1.isEmpty()) return;
 
     if (button == ui->add) operand = Op::Add;
@@ -85,7 +84,6 @@ void Laskin::addSubMulDivClickHandler()
     else if (button == ui->div) operand = Op::Div;
     else operand = Op::None;
 
-    // Operaattorin jälkeen syötetään toinen luku
     state = 2;
 }
 
@@ -122,24 +120,22 @@ void Laskin::clearAndEnterClickHandler()
         return;
     }
 
-    // enter
+ 
     float res = 0.0f;
     const bool ok = calculate(res);
 
-    if (!ok) {
-        // Näytä selkeä virhe, mutta älä välttämättä tuhoa syötteitä
+    if (!ok) {ä
         ui->result->setText("Error");
         return;
     }
 
     ui->result->setText(QString::number(res));
 
-    // Ketjutus: tulos -> number1, number2 tyhjäksi, odotetaan seuraavaa operaattoria
     number1 = QString::number(res);
     number2.clear();
     ui->num1->setText(number1);
     ui->num2->clear();
 
     operand = Op::None;
-    state = 2; // yleensä käyttäjä painaa seuraavaksi operaattorin ja syöttää uuden number2:n
-}
+    state = 2; 
+
