@@ -23,7 +23,7 @@ private:
     QString number1;
     QString number2;
 
-    int state = 1;          // 1 = syötetään number1, 2 = syötetään number2
+    int state = 1;          
     Op operand = Op::None;
 
     void numberClickedHandler();
@@ -36,4 +36,5 @@ private:
     bool calculate(float &outResult) const;
 };
 
-#endif // LASKIN_H
+#endif 
+
